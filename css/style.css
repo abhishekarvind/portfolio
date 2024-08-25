@@ -1284,4 +1284,109 @@ input[type="text"] {
   opacity: 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+.gallery-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* Aspect ratio 4:3 */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-img:hover::before {
+  opacity: 1;
+}
+
+.gallery-img:hover::after {
+  content: 'View Image';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  font-family: 'Space Mono', cursive;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-img::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  font-family: 'Space Mono', cursive;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+  .gallery-img {
+      padding-bottom: 70%; /* Slightly different aspect ratio */
+  }
+}
+
+@media (max-width: 992px) {
+  .gallery-img {
+      padding-bottom: 65%; /* Adjusted aspect ratio */
+  }
+  .gallery-img:hover::after {
+      font-size: 16px; /* Slightly smaller text on hover */
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-img {
+      padding-bottom: 60%; /* Adjusted aspect ratio for tablets */
+  }
+  .gallery-img:hover::after {
+      font-size: 14px; /* Smaller text on hover */
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-img {
+      padding-bottom: 56.25%;
+      margin-bottom: 20px; /* 16:9 aspect ratio for small screens */
+  }
+  .gallery-img:hover::after {
+      font-size: 12px; /* Smaller text for mobile screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery-img {
+      padding-bottom: 50%; /* Adjusted aspect ratio for very small screens */
+  }
+  .gallery-img:hover::after {
+      font-size: 10px; /* Smallest text size for tiny screens */
+  }
+}
+
+
